@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>depthbudget-lab — exact z-fighting budget</title>
+<style>
+  :root { color-scheme: dark; }
+  body { margin: 0; font: 14px/1.5 ui-monospace, SFMono-Regular, Menlo, monospace; background: #0b0e14; color: #d7dce5; }
+  #wrap { display: grid; grid-template-columns: 1fr 320px; height: 100vh; }
+  #view { position: relative; }
+  #panel { padding: 16px; border-left: 1px solid #1f2735; overflow: auto; }
+  h1 { font-size: 15px; margin: 0 0 8px; color: #8ee6c8; }
+  .row { margin: 10px 0; }
+  .big { font-size: 22px; color: #ffd479; }
+  code { color: #9fb3ff; }
+  #badge { position: absolute; left: 12px; top: 12px; padding: 6px 10px; border-radius: 6px; background: #111827cc; font-size: 12px; }
+  select, input[type=range] { width: 100%; }
+</style>
+<script type="importmap">
+{ "imports": { "three": "https://unpkg.com/three@0.160.0/build/three.module.js", "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/" } }
+</script>
+</head>
+<body>
+<div id="wrap">
+  <div id="view"><div id="badge">loading…</div></div>
+  <div id="panel">
+    <h1>depthbudget-lab</h1>
+    <p>Exact depth-buffer separation between overlapping surfaces. Same <code>src/core.mjs</code> as <code>node bench/verify.mjs</code>.</p>
+    <div class="row">Scene <select id="scene"></select></div>
+    <div class="row">Depth bits <select id="bits"><option>24</option><option>16</option></select></div>
+    <div class="row">near <span id="nearv"></span><input id="near" type="range" min="-3" max="1.3" step="0.01" /></div>
+    <div class="row">far <span id="farv"></span><input id="far" type="range" min="0" max="4.5" step="0.01" /></div>
+    <div class="row">Conflicting pairs<div class="big" id="conf">—</div></div>
+    <div class="row">Smallest separation<div class="big" id="minu">—</div><div id="minu2" style="font-size:12px;color:#8b98ad"></div></div>
+    <div class="row">Node reference<div id="ref" style="font-size:12px"></div></div>
+    <div class="row" style="color:#8b98ad;font-size:12px">Red = a pair whose exact minimum gap is below one depth quantum. Press <b>T</b> for tight near/far from scene bounds.</div>
+  </div>
+</div>
+<script type="module" src="./main.js"></script>
+</body>
+</html>

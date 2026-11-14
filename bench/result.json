@@ -1,0 +1,42 @@
+{
+  "generatedBy": "bench/bench.mjs",
+  "node": "v24.19.0",
+  "scenes": 6,
+  "bits": 24,
+  "samples": 7,
+  "overlapPairs": 20,
+  "conflicts": 1,
+  "certificate": {
+    "coldMs": 3.3997010000000003,
+    "min": 0.3195010000000025,
+    "median": 0.4617980000000159,
+    "p95": 0.938775000000021,
+    "max": 0.938775000000021,
+    "mean": 0.4881061428571566,
+    "stddev": 0.19492416571245064,
+    "relStddev": 0.39934790529668635
+  },
+  "samplingBaseline": {
+    "coldMs": 69.384412,
+    "min": 28.70006199999999,
+    "median": 30.29743400000001,
+    "p95": 49.60761500000001,
+    "max": 49.60761500000001,
+    "mean": 34.09042742857141,
+    "stddev": 7.3453795775918715,
+    "relStddev": 0.21546751189853552,
+    "grid": 128,
+    "sampledPairs": 20,
+    "sampledConflicts": 1
+  },
+  "verdictAgreement": {
+    "agree": 20,
+    "disagree": 0,
+    "sampledMissedConflicts": 0
+  },
+  "notes": [
+    "certificate = exact affine 1/z separation over clipped overlap polygons (src/core.mjs)",
+    "samplingBaseline = 129x129 ray/plane samples per pair (bench/oracle.mjs), independent code path",
+    "a sampled baseline can only miss conflicts, never invent them; misses are reported, not hidden"
+  ]
+}
