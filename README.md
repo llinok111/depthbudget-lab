@@ -50,6 +50,12 @@ Relative stddev of the certificate is **39.9%** because the whole pipeline is su
 and GC dominate, so the cold run (3.4 ms) is reported separately and the median is the stable figure.
 The sampling baseline's relative stddev is 21.5%.
 
+**Independent re-run (2026-11-14, clean `/tmp` clone, read-only verifier):** verify reproduced 10/10 and the
+same 1/15/0 conflict counts; certificate median across three fresh runs was **0.397 / 0.507 / 0.544 ms**
+(cold 3.17–3.59 ms) and speedup **62.2–70.4×**, so the committed 0.462 ms / 65.6× sits inside observed
+noise. The n=7 dispersion stats (`min`, `p95`, `stddev`, `relStddev`) swing by more than 20% between runs for
+the same reason — treat only the median and the conflict counts as stable claims, never the p95.
+
 ## 本轮创新
 
 **New:** an exact, closed-form depth-separation certificate over clipped screen-space overlaps plus a
